@@ -6,7 +6,6 @@ class InventoryAllocator {
 	private $inventory = NULL;
 	private $output_listing = NULL;
 	private $inventory_remaining;
-//	private $serial_number;
 	private $order_in;
 	private $backorder;
 	private $ordered;
@@ -96,7 +95,6 @@ class InventoryAllocator {
 			}
 		}
 		
-//		$this->serial_number += 1;
 		return $order_string;
 	}
 	
@@ -104,7 +102,6 @@ class InventoryAllocator {
 	public function process_orders() {
 		
 		if($this->order_stream != NULL && $this->inventory != NULL && $this->inventory_remains()) {
-			//var_dump($this->inventory);
 			foreach($this->order_stream as $order) {
 				if ($this->inventory_remains() == true) {
 					$output_listing .= $this->process_order($order) . "\n";
@@ -115,14 +112,6 @@ class InventoryAllocator {
 			echo "\n$output_listing";
 		} else {
 			echo "SOMETHING IS AMISS\n";
-
-			echo "\n\$inventory_remaining: \n";
-			print_r($this->inventory_remaining);
-			echo "\n\$order_stream: \n";
-			print_r($this->order_stream);
-			echo "\n\$inventory: \n";
-			print_r($this->inventory);
-
 		}
 	}
 
